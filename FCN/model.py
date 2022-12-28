@@ -73,13 +73,13 @@ class FCN(nn.Module):
         nn.Upsample(size=(1000), mode='bilinear'),    
     )
 
-  def forward(self, x, transfer=False):
+  def forward(self, x, transfer=False):     # [b, 3, 1000, 1000]
     
-    feature_map = self.front_end(x)
+    feature_map = self.front_end(x)         # [b, class, 88, 88]
     if transfer:
       return feature_map
     
-    predict = self.upsample(feature_map)
+    predict = self.upsample(feature_map)    # [b, class, 1000, 1000]
 
     return predict
 

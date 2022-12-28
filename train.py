@@ -104,7 +104,8 @@ def main():
             start_iteration = check_point['iteration']
     else:
         # initialize the model
-        vgg = VGG16(pretrained=True)
+        # vgg = VGG16(pretrained=True)
+        vgg = VGG16(pretrained=False)
         model.copy_para_from_vgg16(vgg)
 
     if cuda:
